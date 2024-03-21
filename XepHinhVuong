@@ -1,0 +1,27 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void findRectangle(int n) {
+    int root = sqrt(n);
+    while(n % root != 0) {
+        root--;
+    }
+    cout << root <<" " << n/root <<endl;
+}
+
+int main() {
+    int t =0;
+    long long n;
+    cin >> t;
+    while (t > 0 && t--) {
+        cin >> n;
+        findRectangle(n);   
+    }
+    return 0;
+}
+
+https://www.hackerrank.com/contests/300-bai-code-thieu-nhi/challenges/ada-1/problem ---- Problem Here!
