@@ -1,0 +1,52 @@
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define MAXN 1000000
+
+long long countJencandy(int i, long long m, long long* a) {
+    long long keoJen = 0;
+    long long iKeoeach = 0;
+    if(m <= a[i]) {
+        keoJen = m;
+    }
+    else {
+        while (iKeoeach <= m / (a[i]+1)) {
+            iKeoeach ++;
+        }
+        keoJen = m - (a[i]*(iKeoeach-1));
+    }
+    return keoJen;
+}
+
+int main() {
+    long long t;
+    cin >> t;
+    // Using a vector to dynamically allocate memory for sums
+    vector<long long> sum(t, 0); // Initialize all elements to 0
+
+    for(int test = 0; test < t; test++) {
+        long long n, m;
+        cin >> n >> m;
+        // It's safer to use a vector for 'a' but keeping it as an array for minimal changes
+        long long a[MAXN]; // Note: Large stack allocations might be unsafe
+        for(int i = 0; i < n; i++) {
+            cin >> a[i];
+            // Accumulate the result directly in the corresponding position
+            sum[test] += countJencandy(i, m, a);
+        }
+    }
+
+    // Print the results in the order processed
+    for(long long result : sum) {
+        cout << result << endl;
+    }
+
+    return 0;
+}
+
+
+https://www.hackerrank.com/contests/300-bai-code-thieu-nhi/challenges/chia-keo-5-2/submissions/code/1376069728 --- Problem solved !
